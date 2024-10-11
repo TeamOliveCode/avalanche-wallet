@@ -109,3 +109,7 @@ By default, there are two network options to connect to: `Mainnet` and `Fuji`.
 -   Avalanche API: `https://api.avax-test.network:443`
 -   Explorer API: `https://explorerapi.avax-test.network`
 
+#### LocalNet (Local)
+
+-   Avalanche API : `http://localhost:9650`
+-   Explorer API : ``

@@ -1,5 +1,5 @@
 process.env.VUE_APP_VERSION = process.env.npm_package_version
-
+process.env.EXPLORER_ADDRESS_URL = 'http://localhost:3000/address'
 module.exports = {
     productionSourceMap: false,
     transpileDependencies: ['vuetify'],
