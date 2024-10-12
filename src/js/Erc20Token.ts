@@ -9,6 +9,7 @@ import ERC20Abi from '@openzeppelin/contracts/build/contracts/ERC20.json'
 
 class Erc20Token {
     data: TokenListToken
+    address: string
     contract: any
     balanceRaw: string
     balanceBN: BN
@@ -19,6 +20,7 @@ class Erc20Token {
         this.balanceRaw = '0'
         this.balanceBN = new BN('0')
         this.balanceBig = Big(0)
+        this.address = tokenData.address
 
         //@ts-ignore
         const tokenInst = new web3.eth.Contract(ERC20Abi.abi, tokenData.address)
@@ -31,8 +33,22 @@ class Erc20Token {
         const tokenInst = new web3.eth.Contract(ERC20Abi.abi, address)
     }
 
+    refreshInst() {
+        //@ts-ignore
+        const tokenInst = new web3.eth.Contract(ERC20Abi.abi, this.address)
+        this.contract = tokenInst
+    }
+
     createTransferTx(to: string, amount: BN) {
         return this.contract.methods.transfer(to, amount.toString())
+    }
+
+    setGasPrice(gasPrice: BN) {
+        this.contract.options.gasPrice = gasPrice
+    }
+
+    setGasLimit(gasLimit: number) {
+        this.contract.options.gas = gasLimit
     }
 
     async updateBalance(address: string) {
