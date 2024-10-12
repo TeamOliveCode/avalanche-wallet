@@ -17,11 +17,3 @@ export const TestnetConfig = new AvaNetwork(
     'https://explorer-xp.avax-test.network',
     true
 )
-export const HBTestnetConfig = new AvaNetwork(
-    'LocalNet',
-    'http://localhost:9650',
-    43112,
-    'https://explorerapi.avax-test.network',
-    'https://explorer-xp.avax-test.network',
-    true
-)

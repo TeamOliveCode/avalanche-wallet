@@ -97,6 +97,8 @@ export default class AccountSettingsModal extends Vue {
     width: 320px;
     max-width: 100%;
     padding: 20px 30px;
+    margin: 0 auto; // 수평 중앙 정렬
+
     color: var(--primary-color);
 }
 

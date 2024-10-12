@@ -86,11 +86,12 @@ abstract class AbstractHdWallet extends AbstractWallet {
     }
     // Fetches the utxos
     async getUTXOs(): Promise<void> {
-        this.updateUTXOsX()
+        //C-Chain 정보만 업데이트 하도록 비활성화
+        // this.updateUTXOsX()
 
-        // platform utxos are updated but not returned by function
-        this.updateUTXOsP()
-
+        //  platform utxos are updated but not returned by function
+        // this.updateUTXOsP()
+        this.isFetchUtxos = false
         return
     }
 

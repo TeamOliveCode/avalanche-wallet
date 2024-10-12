@@ -24,7 +24,7 @@
                     </p>
                 </a>
                 <div class="buts">
-                    <button
+                    <!-- <button
                         v-if="chainNow === 'C'"
                         :tooltip="`View the bech32 encoded C-Chain address`"
                         class="bech32"
@@ -32,7 +32,7 @@
                         :active="showBech"
                     >
                         Bech32
-                    </button>
+                    </button> -->
                     <button
                         :tooltip="$t('top.hover1')"
                         @click="viewQRModal"

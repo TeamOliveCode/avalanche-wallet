@@ -11,7 +11,7 @@ import router from '@/router'
 import { web3 } from '@/evm'
 import { setSocketNetwork } from '../../../providers'
 import { getConfigFromUrl, setNetworkAsync } from '@avalabs/avalanche-wallet-sdk'
-import { MainnetConfig, TestnetConfig, HBTestnetConfig } from '@/store/modules/network/constants'
+import { MainnetConfig, TestnetConfig } from '@/store/modules/network/constants'
 const network_module: Module<NetworkState, RootState> = {
     namespaced: true,
     state: {
@@ -191,8 +191,6 @@ const network_module: Module<NetworkState, RootState> = {
 
             commit('addNetwork', MainnetConfig)
             commit('addNetwork', TestnetConfig)
-            commit('addNetwork', HBTestnetConfig)
-
             try {
                 const isSet = await dispatch('loadSelectedNetwork')
                 if (!isSet) {

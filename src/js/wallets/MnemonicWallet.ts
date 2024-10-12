@@ -149,7 +149,8 @@ export default class MnemonicWallet extends AbstractHdWallet implements IAvaHdWa
         }
 
         super.getUTXOs()
-        this.getStake()
+        //wn
+        //this.getStake()
         this.getEthBalance()
         return
     }
