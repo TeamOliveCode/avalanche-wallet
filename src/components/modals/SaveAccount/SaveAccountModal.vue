@@ -142,12 +142,15 @@ export default class SaveAccountModal extends Vue {
     width: 320px;
     max-width: 100%;
     padding: 12px 30px;
+    margin: 0 auto; // 수평 중앙 정렬
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 form {
     display: flex;
     flex-direction: column;
-
     > * {
         margin: 6px 0px;
     }

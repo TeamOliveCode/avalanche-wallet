@@ -2,7 +2,7 @@
     <v-app>
         <v-main>
             <template>
-                <UrlBanner></UrlBanner>
+                <!-- <UrlBanner></UrlBanner> -->
                 <navbar v-show="isNavbar"></navbar>
                 <div class="main_cols" :wallet_view="!isNavbar">
                     <UpgradeToAccountModal></UpgradeToAccountModal>
@@ -18,7 +18,7 @@
         <NetworkLoadingBlock></NetworkLoadingBlock>
         <notifications></notifications>
         <analytics></analytics>
-        <TestNetBanner></TestNetBanner>
+        <!-- <TestNetBanner></TestNetBanner> -->
     </v-app>
 </template>
 <script>

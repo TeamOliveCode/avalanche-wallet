@@ -13,12 +13,18 @@
             </div>
             <div class="bottom_rest">
                 <p class="subtitle">{{ addressLabel }}</p>
-
-                <p class="addr_text" data-cy="wallet_address">
-                    {{ activeAddress }}
-                </p>
+                <a
+                    :href="`${explorerUrl}/${activeAddress}`"
+                    target="_blank"
+                    tooltip="View in Explorer"
+                    class="explorer_link"
+                >
+                    <p class="addr_text" data-cy="wallet_address">
+                        {{ activeAddress }}
+                    </p>
+                </a>
                 <div class="buts">
-                    <button
+                    <!-- <button
                         v-if="chainNow === 'C'"
                         :tooltip="`View the bech32 encoded C-Chain address`"
                         class="bech32"
@@ -26,7 +32,7 @@
                         :active="showBech"
                     >
                         Bech32
-                    </button>
+                    </button> -->
                     <button
                         :tooltip="$t('top.hover1')"
                         @click="viewQRModal"
@@ -52,9 +58,9 @@
                 </div>
             </div>
         </div>
-        <div class="bottom_tabs">
+        <!-- <div class="bottom_tabs">
             <ChainSelect v-model="chainNow"></ChainSelect>
-        </div>
+        </div> -->
     </div>
 </template>
 <script lang="ts">
@@ -89,7 +95,7 @@ import { getPreferredHRP } from 'avalanche/dist/utils'
 export default class AddressCard extends Vue {
     colorLight: string = '#FFF'
     colorDark: string = '#242729'
-    chainNow: ChainIdType = 'X'
+    chainNow: ChainIdType = 'C'
     showBech = false // If true C-Chain shows the bech32 Address
     $refs!: {
         qr_modal: QRModal
@@ -137,7 +143,9 @@ export default class AddressCard extends Vue {
                     : (this.$t('top.address.title_c') as string)
         }
     }
-
+    get explorerUrl(): string {
+        return process.env.VUE_APP_EXPLORER_ADDRESS_URL || 'http://localhost:3000/address'
+    }
     get addressMsg(): string {
         switch (this.chainNow) {
             default:

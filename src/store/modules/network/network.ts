@@ -191,7 +191,6 @@ const network_module: Module<NetworkState, RootState> = {
 
             commit('addNetwork', MainnetConfig)
             commit('addNetwork', TestnetConfig)
-
             try {
                 const isSet = await dispatch('loadSelectedNetwork')
                 if (!isSet) {

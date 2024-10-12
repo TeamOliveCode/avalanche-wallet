@@ -24,14 +24,14 @@
             <network-menu></network-menu>
             <LanguageSelect class="lang_web"></LanguageSelect>
 
-            <button @click="togglePopup">
+            <!-- <button @click="togglePopup">
                 <fa icon="ellipsis-h"></fa>
             </button>
             <div class="popup-wrapper">
                 <div class="popup" v-if="popupOpen">
                     <AnalyticsCheckbox></AnalyticsCheckbox>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="mobile_right">
@@ -58,7 +58,7 @@
                 <template v-if="isAuth">
                     <router-link to="/wallet">{{ $t('wallet.sidebar.portfolio') }}</router-link>
                     <router-link to="/wallet/transfer">{{ $t('wallet.sidebar.send') }}</router-link>
-                    <router-link to="/wallet/cross_chain">
+                    <!-- <router-link to="/wallet/cross_chain">
                         {{ $t('wallet.sidebar.export') }}
                     </router-link>
                     <router-link to="/wallet/earn">{{ $t('wallet.sidebar.earn') }}</router-link>
@@ -66,7 +66,7 @@
                     <router-link to="/wallet/keys">{{ $t('wallet.sidebar.manage') }}</router-link>
                     <router-link to="/wallet/advanced" data-cy="wallet_advanced">
                         {{ $t('wallet.sidebar.advanced') }}
-                    </router-link>
+                    </router-link> -->
                     <button class="logout" @click="logout">
                         {{ $t('logout.button') }}
                     </button>

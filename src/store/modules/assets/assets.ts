@@ -330,7 +330,8 @@ const assets_module: Module<AssetsState, RootState> = {
             await wallet.getUTXOs()
             dispatch('onUtxosUpdated')
             dispatch('updateERC20Balances')
-            dispatch('ERC721/updateWalletBalance')
+
+            //dispatch('ERC721/updateWalletBalance')
             commit('updateActiveAddress', null, { root: true })
         },
 

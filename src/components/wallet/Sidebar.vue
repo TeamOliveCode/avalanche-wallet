@@ -16,7 +16,7 @@
                     <img v-else src="@/assets/sidebar/transfer_nav_night.svg" />
                     {{ $t('wallet.sidebar.send') }}
                 </router-link>
-                <router-link
+                <!-- <router-link
                     to="/wallet/cross_chain"
                     data-cy="wallet_export"
                     class="wallet_export wallet_link"
@@ -48,12 +48,12 @@
                     <img v-if="$root.theme === 'day'" src="@/assets/sidebar/advanced_nav.png" />
                     <img v-else src="@/assets/sidebar/advanced_nav_night.png" />
                     {{ $t('wallet.sidebar.advanced') }}
-                </router-link>
+                </router-link> -->
             </div>
             <div class="bottom">
                 <AccountMenu class="wallet_link"></AccountMenu>
                 <LanguageSelect></LanguageSelect>
-                <AnalyticsCheckbox></AnalyticsCheckbox>
+                <!-- <AnalyticsCheckbox></AnalyticsCheckbox> -->
             </div>
         </div>
     </div>
