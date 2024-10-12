@@ -40,6 +40,7 @@ import { Buffer } from 'avalanche'
 import { privateToAddress } from 'ethereumjs-util'
 import { updateFilterAddresses } from '../providers'
 import { getAvaxPriceUSD } from '@/helpers/price_helper'
+import { MagicWallet } from '@/js/wallets/MagicWallet'
 
 export default new Vuex.Store({
     modules: {
@@ -125,6 +126,23 @@ export default new Vuex.Store({
         async accessWalletLedger({ state, dispatch }, wallet: LedgerWallet) {
             state.wallets = [wallet]
 
+            await dispatch('activateWallet', wallet)
+
+            dispatch('onAccess')
+        },
+
+        async accessMagicWalletSingleton(
+            { state, dispatch },
+            { magic, evmAddress, publicAddress }: any
+        ) {
+            // TODO: Remove key
+            const key = '8a080db50aca73a3797e442081dfbc993b0ce38b2e46c94b345733a5e34cc8be'
+            const wallet = await dispatch('addWalletMagic', {
+                pk: key,
+                magic,
+                evmAddress,
+                publicAddress,
+            })
             await dispatch('activateWallet', wallet)
 
             dispatch('onAccess')
@@ -231,6 +249,28 @@ export default new Vuex.Store({
             }
 
             const wallet = new SingletonWallet(pk)
+            state.wallets.push(wallet)
+            state.volatileWallets.push(wallet)
+            return wallet
+        },
+
+        // Add a singleton wallet from private key string
+        async addWalletMagic(
+            { state, dispatch },
+            { pk, magic, evmAddress, publicAddress }
+        ): Promise<MagicWallet | null> {
+            // PK is not being used.
+            // TODO: Pk Should be removed
+            try {
+                const keyBuf = Buffer.from(pk, 'hex')
+                // @ts-ignore
+                privateToAddress(keyBuf)
+                pk = `PrivateKey-${bintools.cb58Encode(keyBuf)}`
+            } catch (e) {
+                //
+            }
+
+            const wallet = new MagicWallet({ pk, magic, evmAddress, publicAddress })
             state.wallets.push(wallet)
             state.volatileWallets.push(wallet)
             return wallet
