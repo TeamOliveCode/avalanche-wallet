@@ -63,6 +63,7 @@ export default new Vuex.Store({
         prices: {
             usd: 0,
         },
+        magic: null,
     },
     getters: {
         addresses(state: RootState): string[] {
@@ -144,7 +145,7 @@ export default new Vuex.Store({
                 publicAddress,
             })
             await dispatch('activateWallet', wallet)
-
+            dispatch('assignMagic', magic)
             dispatch('onAccess')
         },
 
@@ -176,6 +177,9 @@ export default new Vuex.Store({
         },
 
         async logout(store) {
+            if (store.state.magic) {
+                await store.state.magic.user.logout()
+            }
             localStorage.removeItem('w')
             // Go to the base URL with GET request not router
             // This clears all state and resets the app
@@ -305,6 +309,10 @@ export default new Vuex.Store({
             commit('updateActiveAddress')
             dispatch('History/updateTransactionHistory')
             updateFilterAddresses()
+        },
+
+        assignMagic({ state, dispatch, commit }, magic) {
+            state.magic = magic
         },
 
         async exportWallets({ state, dispatch }, input: ExportWalletsInput) {
