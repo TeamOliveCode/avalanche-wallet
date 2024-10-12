@@ -8,6 +8,14 @@
                         <div class="login_wrapper">
                             <div class="login_option">
                                 <header>
+                                    <h1>AUTH</h1>
+                                </header>
+                                <div :style="{ display: 'flex', 'flex-direction': 'column' }">
+                                    <button @click="login()">EMAIL LOGIN</button>
+                                </div>
+                            </div>
+                            <div class="login_option">
+                                <header>
                                     <div class="img_container">
                                         <img
                                             v-if="$root.theme === 'day'"
@@ -69,12 +77,48 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import ToS from '@/components/misc/ToS.vue'
+import { Magic } from 'magic-sdk'
+import { changeRpc } from '@/evm'
+
+const customNodeOptions = {
+    rpcUrl: process.env.VUE_APP_RPC_URL || '',
+    chainId: process.env.VUE_APP_CHAIN_ID ? +process.env.VUE_APP_CHAIN_ID : 43114,
+}
+
+const magic = new Magic(process.env.VUE_APP_MAGIC_PK || '', {
+    network: customNodeOptions,
+})
+console.log()
 
 @Component({
     name: 'home',
     components: { ToS },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+    async isLoggedIn(): Promise<boolean> {
+        return magic.user.isLoggedIn()
+    }
+    async init() {
+        if (await this.isLoggedIn()) {
+            const userInfo = await magic.wallet.getInfo()
+            const evmAddress = userInfo.publicAddress.replace('0x', '')
+            changeRpc(magic.rpcProvider)
+            this.$store.dispatch('accessMagicWalletSingleton', { magic, evmAddress, publicAddress: evmAddress })
+        }
+    }
+    async login() {
+        const userInfo = await magic.wallet.connectWithUI()
+        const evmAddress = userInfo[0].replace('0x', '')
+        changeRpc(magic.rpcProvider)
+        this.$store.dispatch('accessMagicWalletSingleton', { magic, evmAddress, publicAddress: evmAddress })
+    }
+
+    created() {
+        // TODO: consider vuejs lifecycle.
+        // Lifecycle will not wait for the init() method.
+        this.init()
+    }
+}
 </script>
 
 <style scoped lang="scss">
