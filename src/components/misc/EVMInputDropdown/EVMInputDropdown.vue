@@ -14,9 +14,9 @@
                         class="bigIn"
                         :disabled="disabled"
                     ></BigNumInput>
-                    <p class="usd_val" :active="token === 'native'">
+                    <!-- <p class="usd_val" :active="token === 'native'">
                         ${{ usd_val.toLocaleString(2) }}
-                    </p>
+                    </p> -->
                 </div>
             </template>
             <template v-else>
@@ -80,14 +80,14 @@ export default class EVMInputDropdown extends Vue {
     clear() {
         this.$refs.dropdown.clear()
     }
+    // 전송시 토큰 금액 표시
+    // get usd_val(): Big {
+    //     if (this.token != 'native') return Big(0)
 
-    get usd_val(): Big {
-        if (this.token != 'native') return Big(0)
-
-        let price = this.$store.state.prices.usd
-        let big = bnToBig(this.amt, 18)
-        return big.mul(Big(price))
-    }
+    //     let price = this.$store.state.prices.usd
+    //     let big = bnToBig(this.amt, 18)
+    //     return big.mul(Big(price))
+    // }
 
     get max_amount(): BN {
         // Subtract gas

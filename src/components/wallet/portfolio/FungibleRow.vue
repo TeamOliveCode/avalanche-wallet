@@ -19,10 +19,10 @@
                 {{ amtBig.toLocaleString() }}
             </span>
             <br />
-            <span class="fiat" v-if="isAvaxToken">
+            <!-- <span class="fiat" v-if="isAvaxToken">
                 {{ totalUSD.toLocaleString(2) }}
                 &nbsp;USD
-            </span>
+            </span> -->
         </p>
         <p class="balance_col" v-else>0</p>
     </div>
@@ -65,14 +65,14 @@ export default class FungibleRow extends Vue {
         }
         return false
     }
-
-    get totalUSD(): Big {
-        if (!this.isAvaxToken) return Big(0)
-        let usdPrice = this.priceDict.usd
-        let bigAmt = bnToBig(this.amount, this.asset.denomination)
-        let usdBig = bigAmt.times(usdPrice)
-        return usdBig
-    }
+    // Avax 가격 표시 부분
+    // get totalUSD(): Big {
+    //     if (!this.isAvaxToken) return Big(0)
+    //     let usdPrice = this.priceDict.usd
+    //     let bigAmt = bnToBig(this.amount, this.asset.denomination)
+    //     let usdBig = bigAmt.times(usdPrice)
+    //     return usdBig
+    // }
 
     get priceDict(): priceDict {
         return this.$store.state.prices
@@ -80,7 +80,8 @@ export default class FungibleRow extends Vue {
 
     get sendLink(): string {
         if (!this.asset) return `/wallet/transfer`
-        return `/wallet/transfer?asset=${this.asset.id}&chain=X`
+        //기본적으로 X로 세팅 되어있던걸 C로 변경
+        return `/wallet/transfer?asset=${this.asset.id}&chain=C`
     }
 
     get avaxToken(): AvaAsset {
