@@ -39,8 +39,7 @@ import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 import { Buffer } from 'avalanche'
 import { privateToAddress } from 'ethereumjs-util'
 import { updateFilterAddresses } from '../providers'
-import { getAvaxPriceUSD } from '@/helpers/price_helper'
-import { MagicWallet } from '@/js/wallets/MagicWallet'
+//import { getAvaxPriceUSD } from '@/helpers/price_helper'
 
 export default new Vuex.Store({
     modules: {
@@ -63,7 +62,6 @@ export default new Vuex.Store({
         prices: {
             usd: 0,
         },
-        magic: null,
     },
     getters: {
         addresses(state: RootState): string[] {
@@ -132,23 +130,6 @@ export default new Vuex.Store({
             dispatch('onAccess')
         },
 
-        async accessMagicWalletSingleton(
-            { state, dispatch },
-            { magic, evmAddress, publicAddress }: any
-        ) {
-            // TODO: Remove key
-            const key = '8a080db50aca73a3797e442081dfbc993b0ce38b2e46c94b345733a5e34cc8be'
-            const wallet = await dispatch('addWalletMagic', {
-                pk: key,
-                magic,
-                evmAddress,
-                publicAddress,
-            })
-            await dispatch('activateWallet', wallet)
-            dispatch('assignMagic', magic)
-            dispatch('onAccess')
-        },
-
         async accessWalletSingleton({ state, dispatch }, key: string) {
             const wallet = await dispatch('addWalletSingleton', key)
             await dispatch('activateWallet', wallet)
@@ -177,9 +158,6 @@ export default new Vuex.Store({
         },
 
         async logout(store) {
-            if (store.state.magic) {
-                await store.state.magic.user.logout()
-            }
             localStorage.removeItem('w')
             // Go to the base URL with GET request not router
             // This clears all state and resets the app
@@ -258,28 +236,6 @@ export default new Vuex.Store({
             return wallet
         },
 
-        // Add a singleton wallet from private key string
-        async addWalletMagic(
-            { state, dispatch },
-            { pk, magic, evmAddress, publicAddress }
-        ): Promise<MagicWallet | null> {
-            // PK is not being used.
-            // TODO: Pk Should be removed
-            try {
-                const keyBuf = Buffer.from(pk, 'hex')
-                // @ts-ignore
-                privateToAddress(keyBuf)
-                pk = `PrivateKey-${bintools.cb58Encode(keyBuf)}`
-            } catch (e) {
-                //
-            }
-
-            const wallet = new MagicWallet({ pk, magic, evmAddress, publicAddress })
-            state.wallets.push(wallet)
-            state.volatileWallets.push(wallet)
-            return wallet
-        },
-
         removeWallet({ state, dispatch, getters }, wallet: MnemonicWallet) {
             // TODO: This might cause an error use wallet id instead
             const index = state.wallets.indexOf(wallet)
@@ -309,10 +265,6 @@ export default new Vuex.Store({
             commit('updateActiveAddress')
             dispatch('History/updateTransactionHistory')
             updateFilterAddresses()
-        },
-
-        assignMagic({ state, dispatch, commit }, magic) {
-            state.magic = magic
         },
 
         async exportWallets({ state, dispatch }, input: ExportWalletsInput) {
@@ -402,12 +354,12 @@ export default new Vuex.Store({
                 throw err
             }
         },
-
-        async updateAvaxPrice(store) {
-            const usd = await getAvaxPriceUSD()
-            store.state.prices = {
-                usd,
-            }
-        },
+        //CoinGecko 에서 Avax 코인 가격 데이터를 가져와서 업데이트 합니다.
+        // async updateAvaxPrice(store) {
+        //     const usd = await getAvaxPriceUSD()
+        //     store.state.prices = {
+        //         usd,
+        //     }
+        // },
     },
 })

@@ -42,5 +42,5 @@ export function getPriceAtUnixTime(time: number): number | undefined {
     if (!pricePair) return undefined
     return pricePair[1]
 }
-
-getPriceHistory()
+// CoinGecko 에서 가격 히스토리를 불러옵니다.
+//getPriceHistory()
