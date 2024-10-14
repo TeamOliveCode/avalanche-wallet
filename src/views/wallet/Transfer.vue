@@ -6,11 +6,11 @@
         </div>
         <div class="card_body" v-else>
             <FormC v-show="formType === 'C'">
-                <ChainInput v-model="formType" :disabled="isConfirm"></ChainInput>
+                <!-- <ChainInput v-model="formType" :disabled="isConfirm"></ChainInput> -->
             </FormC>
             <div class="new_order_Form" v-show="formType === 'X'">
                 <div class="lists">
-                    <ChainInput v-model="formType" :disabled="isConfirm"></ChainInput>
+                    <!-- <ChainInput v-model="formType" :disabled="isConfirm"></ChainInput> -->
                     <div>
                         <tx-list
                             class="tx_list"
@@ -155,7 +155,7 @@ import * as bip39 from 'bip39'
 import FormC from '@/components/wallet/transfer/FormC.vue'
 import { ChainIdType } from '@/constants'
 
-import ChainInput from '@/components/wallet/transfer/ChainInput.vue'
+//import ChainInput from '@/components/wallet/transfer/ChainInput.vue'
 import AvaAsset from '../../js/AvaAsset'
 import { TxState } from '@/components/wallet/earn/ChainTransfer/types'
 @Component({
@@ -166,7 +166,7 @@ import { TxState } from '@/components/wallet/earn/ChainTransfer/types'
         NftList,
         TxSummary,
         FormC,
-        ChainInput,
+        //ChainInput,
     },
 })
 export default class Transfer extends Vue {

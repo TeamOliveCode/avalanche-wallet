@@ -60,9 +60,10 @@
                     {{ $t('transfer.fee_tx') }}
                     <span>{{ maxFeeText }} AVAX</span>
                 </p>
+                <!-- 블록체인전송시 USD 표시
                 <p>
                     <span>${{ maxFeeUSD.toLocaleString(2) }} USD</span>
-                </p>
+                </p> -->
             </div>
             <template v-if="!isSuccess">
                 <p class="err">{{ err }}</p>
@@ -288,10 +289,10 @@ export default class FormC extends Vue {
         let res = this.gasPrice.mul(new BN(this.gasLimit))
         return res
     }
-
-    get maxFeeUSD() {
-        return bnToBigAvaxC(this.maxFee).times(this.priceDict.usd)
-    }
+    // 블록체인 전송 수수료
+    // get maxFeeUSD() {
+    //     return bnToBigAvaxC(this.maxFee).times(this.priceDict.usd)
+    // }
 
     get maxFeeText(): string {
         return bnToAvaxC(this.maxFee)
