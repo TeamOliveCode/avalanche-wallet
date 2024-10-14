@@ -105,6 +105,7 @@ export default class Home extends Vue {
     async init() {
         if (await this.isLoggedIn()) {
             const userInfo = await magic.wallet.getInfo()
+            // @ts-ignore
             const evmAddress = userInfo.publicAddress.replace('0x', '')
             changeRpc(magic.rpcProvider)
             this.$store.dispatch('accessMagicWalletSingleton', {
