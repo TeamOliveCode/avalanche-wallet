@@ -122,6 +122,13 @@ export default new Vuex.Store({
 
             dispatch('onAccess')
         },
+        async accessWalletLedger({ state, dispatch }, wallet: LedgerWallet) {
+            state.wallets = [wallet]
+
+            await dispatch('activateWallet', wallet)
+
+            dispatch('onAccess')
+        },
         async accessMagicWalletSingleton(
             { state, dispatch },
             { magic, evmAddress, publicAddress }: any
@@ -138,15 +145,6 @@ export default new Vuex.Store({
             dispatch('assignMagic', magic)
             dispatch('onAccess')
         },
-
-        async accessWalletLedger({ state, dispatch }, wallet: LedgerWallet) {
-            state.wallets = [wallet]
-
-            await dispatch('activateWallet', wallet)
-
-            dispatch('onAccess')
-        },
-
         async accessWalletSingleton({ state, dispatch }, key: string) {
             const wallet = await dispatch('addWalletSingleton', key)
             await dispatch('activateWallet', wallet)
