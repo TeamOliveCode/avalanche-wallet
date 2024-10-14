@@ -125,8 +125,10 @@ export default class Fungibles extends Vue {
 
     get erc20Balances(): Erc20Token[] {
         let tokens: Erc20Token[] = this.$store.getters['Assets/networkErc20Tokens']
+
         let filt = tokens.filter((token) => {
-            if (token.balanceBN.isZero()) return false
+            // 테스트용 입니다.
+            //if (token.balanceBN.isZero()) return false
             return true
         })
         return filt
