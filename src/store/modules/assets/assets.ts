@@ -278,20 +278,21 @@ const assets_module: Module<AssetsState, RootState> = {
         },
 
         async initErc20List({ state, dispatch, commit }) {
+            // TokenList 불러오는 로직
             // Load default erc20 token contracts
-            const erc20Tokens = await fetchTokenList()
-            erc20Tokens.readonly = true
-            erc20Tokens.url = 'Default'
-            await dispatch('addTokenList', erc20Tokens)
+            // const erc20Tokens = await fetchTokenList()
+            // erc20Tokens.readonly = true
+            // erc20Tokens.url = 'Default'
+            // await dispatch('addTokenList', erc20Tokens)
 
-            for (let i = 0; i < TOKEN_LISTS.length; i++) {
-                await dispatch('addTokenListUrl', {
-                    url: TOKEN_LISTS[i],
-                    readonly: true,
-                })
-            }
+            // for (let i = 0; i < TOKEN_LISTS.length; i++) {
+            //     await dispatch('addTokenListUrl', {
+            //         url: TOKEN_LISTS[i],
+            //         readonly: true,
+            //     })
+            // }
 
-            dispatch('loadCustomTokenLists')
+            //dispatch('loadCustomTokenLists')
             commit('loadCustomErc20Tokens')
         },
 
@@ -477,7 +478,7 @@ const assets_module: Module<AssetsState, RootState> = {
         networkErc20Tokens(state: AssetsState, getters, rootState: RootState): Erc20Token[] {
             const tokens = state.erc20Tokens.concat(state.erc20TokensCustom)
             const chainId = state.evmChainId
-
+            //토큰 정보 불러오기 LocalStorage에 등록된 토큰과 체인id 가 다르다면 가져올수없음.
             const filt = tokens.filter((t) => {
                 if (t.data.chainId !== chainId) return false
                 return true
