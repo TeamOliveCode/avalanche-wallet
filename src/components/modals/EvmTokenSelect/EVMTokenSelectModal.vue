@@ -64,7 +64,8 @@ export default class EVMTokenSelectModal extends Vue {
     get tokens(): Erc20Token[] {
         let tokens: Erc20Token[] = this.$store.getters['Assets/networkErc20Tokens']
         let filt = tokens.filter((t) => {
-            if (t.balanceBN.isZero()) return false
+            // 테스트를 위해 잔액이 0원이여도 표시합니다.
+            // if (t.balanceBN.isZero()) return false
             return true
         })
         return filt

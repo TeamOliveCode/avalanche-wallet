@@ -36,6 +36,7 @@ import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 import { getPayloadFromUTXO } from '@/helpers/helper'
 import { isUrlBanned } from '@/components/misc/NftPayloadView/blacklist'
 import { fetchTokenList } from '@/store/modules/assets/fetchTokenList'
+import { getEvmChainID } from '@avalabs/avalanche-wallet-sdk'
 
 const assets_module: Module<AssetsState, RootState> = {
     namespaced: true,
@@ -359,10 +360,13 @@ const assets_module: Module<AssetsState, RootState> = {
             // Old ledger wallets do not have an eth address
             if (!wallet.ethAddress) return
 
+            //블록체인 생성 당시의 체인아이디를 가지고 있습니다.
             const networkID = state.evmChainId
             const tokens: Erc20Token[] = getters.networkErc20Tokens
             tokens.forEach((token) => {
-                if (token.data.chainId !== networkID) return
+                //체인아이디가 다를경우 보여주지 않습니다
+                //저희는 저희의 토큰을 보여주면서 AVAX 메인넷 토큰을등록할수있어야 하기에 비활성화 처리합니다.
+                // if (token.data.chainId !== networkID) return
                 token.updateBalance(wallet!.ethAddress)
             })
         },
@@ -480,7 +484,9 @@ const assets_module: Module<AssetsState, RootState> = {
             const chainId = state.evmChainId
             //토큰 정보 불러오기 LocalStorage에 등록된 토큰과 체인id 가 다르다면 가져올수없음.
             const filt = tokens.filter((t) => {
-                if (t.data.chainId !== chainId) return false
+                //체인아이디가 다를경우 보여주지 않습니다
+                //저희는 저희의 토큰을 보여주면서 AVAX 메인넷 토큰을등록할수있어야 하기에 비활성화 처리합니다.
+                // if (t.data.chainId !== chainId) return false
                 return true
             })
             return filt

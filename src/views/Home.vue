@@ -88,7 +88,6 @@ const customNodeOptions = {
 const magic = new Magic(process.env.VUE_APP_MAGIC_PK || '', {
     network: customNodeOptions,
 })
-console.log()
 
 @Component({
     name: 'home',
@@ -103,14 +102,23 @@ export default class Home extends Vue {
             const userInfo = await magic.wallet.getInfo()
             const evmAddress = userInfo.publicAddress.replace('0x', '')
             changeRpc(magic.rpcProvider)
-            this.$store.dispatch('accessMagicWalletSingleton', { magic, evmAddress, publicAddress: evmAddress })
+            this.$store.dispatch('accessMagicWalletSingleton', {
+                magic,
+                evmAddress,
+                publicAddress: evmAddress,
+            })
         }
     }
     async login() {
+        changeRpc(magic.rpcProvider)
         const userInfo = await magic.wallet.connectWithUI()
         const evmAddress = userInfo[0].replace('0x', '')
-        changeRpc(magic.rpcProvider)
-        this.$store.dispatch('accessMagicWalletSingleton', { magic, evmAddress, publicAddress: evmAddress })
+
+        this.$store.dispatch('accessMagicWalletSingleton', {
+            magic,
+            evmAddress,
+            publicAddress: evmAddress,
+        })
     }
 
     created() {
