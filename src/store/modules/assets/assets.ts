@@ -35,8 +35,7 @@ import MnemonicWallet from '@/js/wallets/MnemonicWallet'
 import { LedgerWallet } from '@/js/wallets/LedgerWallet'
 import { getPayloadFromUTXO } from '@/helpers/helper'
 import { isUrlBanned } from '@/components/misc/NftPayloadView/blacklist'
-import { fetchTokenList } from '@/store/modules/assets/fetchTokenList'
-import { getEvmChainID } from '@avalabs/avalanche-wallet-sdk'
+//import { fetchTokenList } from '@/store/modules/assets/fetchTokenList'
 
 const assets_module: Module<AssetsState, RootState> = {
     namespaced: true,

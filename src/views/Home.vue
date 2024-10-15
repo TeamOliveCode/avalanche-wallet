@@ -110,10 +110,9 @@ export default class Home extends Vue {
         }
     }
     async login() {
-        changeRpc(magic.rpcProvider)
         const userInfo = await magic.wallet.connectWithUI()
         const evmAddress = userInfo[0].replace('0x', '')
-
+        changeRpc(magic.rpcProvider)
         this.$store.dispatch('accessMagicWalletSingleton', {
             magic,
             evmAddress,

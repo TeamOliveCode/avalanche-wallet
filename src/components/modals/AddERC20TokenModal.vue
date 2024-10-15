@@ -49,7 +49,6 @@ export default class AddERC20TokenModal extends Vue {
     name = ''
     symbol = ''
     denomination = 1
-    web = new Web3('https://api.avax.network/ext/bc/C/rpc')
     canAdd = false
     err = ''
     @Watch('tokenAddress')
