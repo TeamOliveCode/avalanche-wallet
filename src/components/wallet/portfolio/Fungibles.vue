@@ -31,8 +31,8 @@
                     ></ERC20Row>
                     <div class="asset add_token_row">
                         <button @click="addToken">Add Token</button>
-                        <span>or</span>
-                        <button @click="addTokenList">Add Token List</button>
+                        <!-- <span>or</span>
+                        <button @click="addTokenList">Add Token List</button> -->
                     </div>
                 </div>
             </div>
@@ -125,8 +125,10 @@ export default class Fungibles extends Vue {
 
     get erc20Balances(): Erc20Token[] {
         let tokens: Erc20Token[] = this.$store.getters['Assets/networkErc20Tokens']
+
         let filt = tokens.filter((token) => {
-            if (token.balanceBN.isZero()) return false
+            // 현재 원활한 테스트를위해 추가한 토큰에 밸런스가 0 이여도 토큰리스트에 보여주고있습니다.
+            //if (token.balanceBN.isZero()) return false
             return true
         })
         return filt
