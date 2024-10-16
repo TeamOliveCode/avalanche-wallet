@@ -60,6 +60,7 @@ export default class ConfirmLogout extends Vue {
 <style scoped lang="scss">
 .confirm_body {
     /*width: 600px;*/
+    margin: auto;
     width: 400px;
     max-width: 100%;
     padding: 30px;

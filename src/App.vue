@@ -63,6 +63,7 @@ export default {
 
         if (this.$store.state.Accounts.accounts.length > 0) {
             // Do not route for legal pages
+            // 이메일로그인도 고려하여 랜딩페이지로 이동
             // if (this.$route.name !== 'legal') {
             //     this.$router.push('/access')
             // }
