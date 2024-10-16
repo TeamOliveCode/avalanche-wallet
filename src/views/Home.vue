@@ -11,7 +11,12 @@
                                     <h1>AUTH</h1>
                                 </header>
                                 <div :style="{ display: 'flex', 'flex-direction': 'column' }">
-                                    <button @click="login()">EMAIL LOGIN</button>
+                                    <button
+                                        @click="login()"
+                                        class="ava_button button_primary submit_but"
+                                    >
+                                        EMAIL LOGIN
+                                    </button>
                                 </div>
                             </div>
                             <div class="login_option">
@@ -160,7 +165,7 @@ export default class Home extends Vue {
         .login_wrapper {
             margin-top: 60px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             column-gap: main.$container-padding;
 
             .login_option {

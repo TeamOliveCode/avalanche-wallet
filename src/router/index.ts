@@ -75,10 +75,10 @@ const routes = [
                 component: Account,
                 name: 'Account',
             },
-            {
-                path: 'xpub',
-                component: Xpub,
-            },
+            // {
+            //     path: 'xpub',
+            //     component: Xpub,
+            // },
         ],
         component: Access,
         beforeEnter: ifNotAuthenticated,
@@ -111,30 +111,30 @@ const routes = [
                 path: 'transfer',
                 component: Transfer,
             },
-            {
-                path: 'cross_chain',
-                component: Export,
-            },
-            {
-                path: 'keys',
-                component: ManageKeys,
-            },
-            {
-                path: 'earn',
-                component: Earn,
-            },
-            {
-                path: 'studio',
-                component: Studio,
-            },
-            {
-                path: 'advanced',
-                component: Advanced,
-            },
-            {
-                path: 'activity',
-                component: Activity,
-            },
+            // {
+            //     path: 'cross_chain',
+            //     component: Export,
+            // },
+            // {
+            //     path: 'keys',
+            //     component: ManageKeys,
+            // },
+            // {
+            //     path: 'earn',
+            //     component: Earn,
+            // },
+            // {
+            //     path: 'studio',
+            //     component: Studio,
+            // },
+            // {
+            //     path: 'advanced',
+            //     component: Advanced,
+            // },
+            // {
+            //     path: 'activity',
+            //     component: Activity,
+            // },
         ],
         component: Wallet,
         beforeEnter: ifAuthenticated,

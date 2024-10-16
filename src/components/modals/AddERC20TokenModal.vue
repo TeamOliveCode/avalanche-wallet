@@ -69,8 +69,7 @@ export default class AddERC20TokenModal extends Vue {
         try {
             //@ts-ignore
             // 토큰이 아발란체 메인넷에서 유효한 토큰인지 확인하기 위한
-            let avaxWeb3 = new Web3('https://api.avax.network/ext/bc/C/rpc')
-            var tokenInst = new avaxWeb3.eth.Contract(ERC20Abi.abi, val)
+            var tokenInst = new web3.eth.Contract(ERC20Abi.abi, val)
             let name = await tokenInst.methods.name().call()
             let symbol = await tokenInst.methods.symbol().call()
             let decimals = await tokenInst.methods.decimals().call()

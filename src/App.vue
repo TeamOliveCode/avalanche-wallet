@@ -63,9 +63,9 @@ export default {
 
         if (this.$store.state.Accounts.accounts.length > 0) {
             // Do not route for legal pages
-            if (this.$route.name !== 'legal') {
-                this.$router.push('/access')
-            }
+            // if (this.$route.name !== 'legal') {
+            //     this.$router.push('/access')
+            // }
         }
     },
     computed: {

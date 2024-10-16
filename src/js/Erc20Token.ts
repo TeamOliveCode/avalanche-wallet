@@ -3,10 +3,8 @@ import { web3 } from '@/evm'
 import { BN } from 'avalanche'
 import { bnToBig } from '@/helpers/helper'
 import Big from 'big.js'
-import store from '@/store'
 
 import ERC20Abi from '@openzeppelin/contracts/build/contracts/ERC20.json'
-import Web3 from 'web3'
 
 class Erc20Token {
     data: TokenListToken
@@ -22,21 +20,21 @@ class Erc20Token {
         this.balanceBN = new BN('0')
         this.balanceBig = Big(0)
         this.address = tokenData.address
-        const avaxWeb3 = new Web3('https://api.avax.network/ext/bc/C/rpc')
+
         //@ts-ignore
-        const tokenInst = new avaxWeb3.eth.Contract(ERC20Abi.abi, tokenData.address)
+        const tokenInst = new web3.eth.Contract(ERC20Abi.abi, tokenData.address)
         this.contract = tokenInst
     }
 
     // Returns a new instance of the token, given only the erc20 address
     static fromAddress(address: string) {
         //@ts-ignore
-        const tokenInst = new avaxWeb3.eth.Contract(ERC20Abi.abi, address)
+        const tokenInst = new web3.eth.Contract(ERC20Abi.abi, address)
     }
 
     refreshInst() {
         //@ts-ignore
-        const tokenInst = new avaxWeb3.eth.Contract(ERC20Abi.abi, this.address)
+        const tokenInst = new web3.eth.Contract(ERC20Abi.abi, this.address)
         this.contract = tokenInst
     }
 
