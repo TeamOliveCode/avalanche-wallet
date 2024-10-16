@@ -37,6 +37,7 @@ import { web3 } from '@/evm'
 import ERC20Abi from '@openzeppelin/contracts/build/contracts/ERC20.json'
 import Erc20Token from '@/js/Erc20Token'
 import { TokenListToken } from '@/store/modules/assets/types'
+import Web3 from 'web3'
 
 @Component({
     components: {
