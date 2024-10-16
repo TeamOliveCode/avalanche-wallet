@@ -11,7 +11,12 @@
                                     <h1>AUTH</h1>
                                 </header>
                                 <div :style="{ display: 'flex', 'flex-direction': 'column' }">
-                                    <button @click="login()">EMAIL LOGIN</button>
+                                    <button
+                                        @click="login()"
+                                        class="ava_button button_primary submit_but"
+                                    >
+                                        EMAIL LOGIN
+                                    </button>
                                 </div>
                             </div>
                             <div class="login_option">
@@ -88,7 +93,6 @@ const customNodeOptions = {
 const magic = new Magic(process.env.VUE_APP_MAGIC_PK || '', {
     network: customNodeOptions,
 })
-console.log()
 
 @Component({
     name: 'home',
@@ -103,14 +107,22 @@ export default class Home extends Vue {
             const userInfo = await magic.wallet.getInfo()
             const evmAddress = userInfo.publicAddress.replace('0x', '')
             changeRpc(magic.rpcProvider)
-            this.$store.dispatch('accessMagicWalletSingleton', { magic, evmAddress, publicAddress: evmAddress })
+            this.$store.dispatch('accessMagicWalletSingleton', {
+                magic,
+                evmAddress,
+                publicAddress: evmAddress,
+            })
         }
     }
     async login() {
         const userInfo = await magic.wallet.connectWithUI()
         const evmAddress = userInfo[0].replace('0x', '')
         changeRpc(magic.rpcProvider)
-        this.$store.dispatch('accessMagicWalletSingleton', { magic, evmAddress, publicAddress: evmAddress })
+        this.$store.dispatch('accessMagicWalletSingleton', {
+            magic,
+            evmAddress,
+            publicAddress: evmAddress,
+        })
     }
 
     created() {
@@ -153,7 +165,7 @@ export default class Home extends Vue {
         .login_wrapper {
             margin-top: 60px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             column-gap: main.$container-padding;
 
             .login_option {

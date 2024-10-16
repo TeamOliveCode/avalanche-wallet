@@ -59,13 +59,14 @@ export default {
         this.$store.commit('Accounts/loadAccounts')
         this.$store.dispatch('Assets/initErc20List')
         this.$store.dispatch('Assets/ERC721/init')
-        this.$store.dispatch('updateAvaxPrice')
+        //this.$store.dispatch('updateAvaxPrice')
 
         if (this.$store.state.Accounts.accounts.length > 0) {
             // Do not route for legal pages
-            if (this.$route.name !== 'legal') {
-                this.$router.push('/access')
-            }
+            // 이메일로그인도 고려하여 랜딩페이지로 이동
+            // if (this.$route.name !== 'legal') {
+            //     this.$router.push('/access')
+            // }
         }
     },
     computed: {

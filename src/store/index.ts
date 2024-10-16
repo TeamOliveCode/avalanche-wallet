@@ -41,6 +41,7 @@ import { privateToAddress } from 'ethereumjs-util'
 import { updateFilterAddresses } from '../providers'
 //import { getAvaxPriceUSD } from '@/helpers/price_helper'
 import { MagicWallet } from '@/js/wallets/MagicWallet'
+
 export default new Vuex.Store({
     modules: {
         Assets,

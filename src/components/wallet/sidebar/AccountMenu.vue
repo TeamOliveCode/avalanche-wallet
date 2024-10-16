@@ -7,7 +7,7 @@
             </button>
             <AccountSettingsModal ref="settings_modal"></AccountSettingsModal>
         </template>
-        <template v-else>
+        <template v-else-if="!wallet.magic">
             <SaveAccountModal ref="save_modal"></SaveAccountModal>
             <button class="save_account" @click="save">
                 <fa icon="exclamation-triangle" class="volatile_alert"></fa>

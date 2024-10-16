@@ -169,11 +169,11 @@ class SingletonWallet extends AbstractWallet implements AvaWalletCore, UnsafeWal
 
     async getUTXOs(): Promise<void> {
         this.isFetchUtxos = true
+        console.log(123)
+        // await this.updateUTXOsX()
+        // await this.updateUTXOsP()
 
-        await this.updateUTXOsX()
-        await this.updateUTXOsP()
-
-        await this.getStake()
+        // await this.getStake()
         await this.getEthBalance()
 
         this.isFetchUtxos = false

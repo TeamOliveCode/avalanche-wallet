@@ -37,6 +37,7 @@ import { web3 } from '@/evm'
 import ERC20Abi from '@openzeppelin/contracts/build/contracts/ERC20.json'
 import Erc20Token from '@/js/Erc20Token'
 import { TokenListToken } from '@/store/modules/assets/types'
+import Web3 from 'web3'
 
 @Component({
     components: {
@@ -67,6 +68,7 @@ export default class AddERC20TokenModal extends Vue {
         }
         try {
             //@ts-ignore
+            //var web = new Web3('https://api.avax.network/ext/bc/C/rpc')
             var tokenInst = new web3.eth.Contract(ERC20Abi.abi, val)
             let name = await tokenInst.methods.name().call()
             let symbol = await tokenInst.methods.symbol().call()
