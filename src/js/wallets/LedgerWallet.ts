@@ -340,6 +340,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
 
                 const sigRaw: any = sigMap.get(pathStr)
                 if (!sigRaw) throw new Error('Missing signature.')
+                //@ts-ignore
                 const sigBuff = BufferAvax.from(sigRaw)
                 const sig: Signature = new Signature()
                 sig.fromBuffer(sigBuff)
@@ -359,6 +360,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
 
                 const sigRaw: any = sigMap.get(pathStr)
                 if (!sigRaw) throw new Error('Missing signature.')
+                //@ts-ignore
                 const sigBuff = BufferAvax.from(sigRaw)
                 const sig: Signature = new Signature()
                 sig.fromBuffer(sigBuff)
@@ -378,6 +380,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
 
                 const sigRaw: any = sigMap.get(pathStr)
                 if (!sigRaw) throw new Error('Missing signature.')
+                //@ts-ignore
                 const sigBuff = BufferAvax.from(sigRaw)
                 const sig: Signature = new Signature()
                 sig.fromBuffer(sigBuff)
@@ -592,6 +595,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
             ((unsignedTx as
                 | AVMUnsignedTx
                 | PlatformUnsignedTx).getTransaction() as AddValidatorTx) || AddDelegatorTx
+        //@ts-ignore
         const txType = tx.getTxType()
         const messages: ILedgerBlockMessage[] = []
 
@@ -601,17 +605,22 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
         ) {
             const format = 'YYYY-MM-DD H:mm:ss UTC'
 
+            //@ts-ignore
             const nodeID = bintools.cb58Encode(tx.getNodeID())
+            //@ts-ignore
             const startTime = moment(tx.getStartTime().toNumber() * 1000)
                 .utc()
                 .format(format)
 
+            //@ts-ignore
             const endTime = moment(tx.getEndTime().toNumber() * 1000)
                 .utc()
                 .format(format)
 
+            //@ts-ignore
             const stakeAmt = bnToBig(tx.getStakeAmount(), 9)
 
+            //@ts-ignore
             const rewardOwners = tx.getRewardOwners()
             const hrp = ava.getHRP()
             const rewardAddrs = rewardOwners
@@ -946,6 +955,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
             store.commit('Ledger/closeModal')
             const signed: any = sigMap.signatures.get(pathStr)
             if (!signed) throw new Error('Unable to get signature fro the given path.')
+            //@ts-ignore
             return bintools.cb58Encode(BufferAvax.from(signed))
         } catch (e) {
             store.commit('Ledger/closeModal')

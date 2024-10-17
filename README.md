@@ -112,3 +112,15 @@ By default, there are two network options to connect to: `Mainnet` and `Fuji`.
 
 -   Avalanche API: `https://api.avax-test.network:443`
 -   Explorer API: `https://explorerapi.avax-test.network`
+
+# For mobile build
+
+## Instructions
+
+1. Build code with `yarn build`
+2. Copy web assets into native project with `npx cap copy`
+3. Run `npx cap open ios` or `npx cap open android`
+
+## Android
+
+As we use old version of capacitor, we highly recommend you using gradle jdk v17.
