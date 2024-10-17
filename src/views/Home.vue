@@ -90,7 +90,7 @@ const customNodeOptions = {
     chainId: process.env.VUE_APP_CHAIN_ID ? +process.env.VUE_APP_CHAIN_ID : 43114,
 }
 
-const magic = new Magic(process.env.VUE_APP_MAGIC_PK || '', {
+const magic: any = new Magic(process.env.VUE_APP_MAGIC_PK || '', {
     network: customNodeOptions,
 })
 
