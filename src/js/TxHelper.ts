@@ -237,7 +237,7 @@ export async function buildEvmTransferNativeTx(
             value: amount,
             data: '0x',
         },
-        chainParams
+        chainParams as any
     )
     return tx
 }
@@ -268,7 +268,7 @@ export async function buildEvmTransferErc20Tx(
             to: token.data.address,
             data: tokenTx.encodeABI(),
         },
-        chainParams
+        chainParams as any
     )
     return tx
 }
@@ -299,7 +299,7 @@ export async function buildEvmTransferErc721Tx(
             to: token.data.address,
             data: tokenTx.encodeABI(),
         },
-        chainParams
+        chainParams as any
     )
     return tx
 }
