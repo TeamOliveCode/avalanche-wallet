@@ -155,7 +155,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
             (txType === AVMConstants.IMPORTTX && chainId === 'X') ||
             (txType === PlatformVMConstants.IMPORTTX && chainId === 'P')
         ) {
-            items = ((tx as AVMImportTx) || PlatformImportTx).getImportInputs()
+            items = (((tx as AVMImportTx) || PlatformImportTx) as any).getImportInputs()
         }
 
         const hrp = getPreferredHRP(ava.getNetworkID())
@@ -302,7 +302,9 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
             (txType === PlatformVMConstants.IMPORTTX && chainId === 'P') ||
             (txType === EVMConstants.IMPORTTX && chainId === 'C')
         ) {
-            items = ((tx as AVMImportTx) || PlatformImportTx || EVMImportTx).getImportInputs()
+            items = (((tx as AVMImportTx) ||
+                PlatformImportTx ||
+                EVMImportTx) as any).getImportInputs()
         }
 
         // Try to get operations, it will fail if there are none, ignore and continue
@@ -336,7 +338,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
                 const pathIndex = i + j
                 const pathStr = paths[pathIndex]
 
-                const sigRaw = sigMap.get(pathStr)
+                const sigRaw: any = sigMap.get(pathStr)
                 if (!sigRaw) throw new Error('Missing signature.')
                 const sigBuff = BufferAvax.from(sigRaw)
                 const sig: Signature = new Signature()
@@ -355,7 +357,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
                 const pathIndex = items.length + i + j
                 const pathStr = paths[pathIndex]
 
-                const sigRaw = sigMap.get(pathStr)
+                const sigRaw: any = sigMap.get(pathStr)
                 if (!sigRaw) throw new Error('Missing signature.')
                 const sigBuff = BufferAvax.from(sigRaw)
                 const sig: Signature = new Signature()
@@ -374,7 +376,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
                 const pathIndex = items.length + i + j
                 const pathStr = paths[pathIndex]
 
-                const sigRaw = sigMap.get(pathStr)
+                const sigRaw: any = sigMap.get(pathStr)
                 if (!sigRaw) throw new Error('Missing signature.')
                 const sigBuff = BufferAvax.from(sigRaw)
                 const sig: Signature = new Signature()
@@ -394,7 +396,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
         SignedTx extends AVMTx | PlatformTx | EvmTx
     >(unsignedTx: UnsignedTx, paths: string[], chainId: ChainIdType): Promise<SignedTx> {
         const txbuff = unsignedTx.toBuffer()
-        const msg: BufferAvax = BufferAvax.from(createHash('sha256').update(txbuff).digest())
+        const msg: BufferAvax = BufferAvax.from(createHash('sha256').update(txbuff).digest() as any)
 
         try {
             store.commit('Ledger/openModal', {
@@ -586,7 +588,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
         unsignedTx: UnsignedTx,
         chainId: ChainIdType
     ): ILedgerBlockMessage[] {
-        const tx =
+        const tx: any =
             ((unsignedTx as
                 | AVMUnsignedTx
                 | PlatformUnsignedTx).getTransaction() as AddValidatorTx) || AddDelegatorTx
@@ -942,7 +944,7 @@ class LedgerWallet extends AbstractHdWallet implements AvaWalletCore {
                 [addressPath]
             )
             store.commit('Ledger/closeModal')
-            const signed = sigMap.signatures.get(pathStr)
+            const signed: any = sigMap.signatures.get(pathStr)
             if (!signed) throw new Error('Unable to get signature fro the given path.')
             return bintools.cb58Encode(BufferAvax.from(signed))
         } catch (e) {
