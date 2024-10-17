@@ -1,3 +1,7 @@
+# WARNING
+
+DO NOT remove and re-write `yarn.lock`. It will result compile error. Need to be fixed in the future.
+
 # Avalanche (AVAX) Wallet
 
 This is the frontend Vue.js application for the Avalanche (AVAX) Wallet.
