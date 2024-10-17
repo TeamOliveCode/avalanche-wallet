@@ -17,7 +17,7 @@
         <LedgerWalletLoading></LedgerWalletLoading>
         <NetworkLoadingBlock></NetworkLoadingBlock>
         <notifications></notifications>
-        <analytics></analytics>
+        <!-- <analytics></analytics> -->
         <!-- <TestNetBanner></TestNetBanner> -->
     </v-app>
 </template>
