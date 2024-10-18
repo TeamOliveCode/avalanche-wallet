@@ -17,4 +17,4 @@ export const TestnetConfig = new AvaNetwork(
     'https://explorer-xp.avax-test.network',
     true
 )
-export const DevnetConfig = new AvaNetwork('Devnet', 'http://127.0.0.1:9650', 40, '', '', true)
+export const DevnetConfig = new AvaNetwork('Devnet', 'http://localhost:9650', 40, '', '', true)
