@@ -19,13 +19,13 @@
                         night="/img/access_icons/night/mnemonic.svg"
                     ></ImageDayNight>
                 </router-link>
-                <router-link to="/access/keystore" class="menu_option button_primary">
+                <!-- <router-link to="/access/keystore" class="menu_option button_primary">
                     {{ $t('access.but_keystore') }}
                     <ImageDayNight
                         day="/img/access_icons/day/keystore.svg"
                         night="/img/access_icons/night/keystore.svg"
                     ></ImageDayNight>
-                </router-link>
+                </router-link> -->
                 <!-- <LedgerButton class="menu_option button_primary"></LedgerButton>
                 <router-link to="/access/xpub" class="menu_option button_primary">
                     XPUB (Readonly)
