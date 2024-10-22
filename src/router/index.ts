@@ -58,10 +58,10 @@ const routes = [
                 name: 'access',
                 component: Menu,
             },
-            {
-                path: 'keystore',
-                component: Keystore,
-            },
+            // {
+            //     path: 'keystore',
+            //     component: Keystore,
+            // },
             {
                 path: 'privatekey',
                 component: PrivateKey,
