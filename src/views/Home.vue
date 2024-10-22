@@ -8,7 +8,16 @@
                         <div class="login_wrapper">
                             <div class="login_option">
                                 <header>
-                                    <h1>AUTH</h1>
+                                    <div class="img_container">
+                                        <img
+                                            v-if="$root.theme === 'day'"
+                                            src="@/assets/email-login.png"
+                                            alt
+                                        />
+                                        <img v-else src="@/assets/email-login.png" alt />
+                                    </div>
+                                    <h2>SIGN IN!</h2>
+                                    <p>Sign in to generate & access your wallet automatcally.</p>
                                 </header>
                                 <div :style="{ display: 'flex', 'flex-direction': 'column' }">
                                     <button
