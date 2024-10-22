@@ -68,7 +68,6 @@ export default class Wallet extends Vue {
     unload(event: BeforeUnloadEvent) {
         // user has no wallet saved
         if (!localStorage.getItem('w') && this.hasVolatileWallets && this.isLogOut) {
-            console.log(123)
             event.preventDefault()
             this.isLogOut = false
             event.returnValue = ''
