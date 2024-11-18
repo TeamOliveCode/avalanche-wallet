@@ -1,7 +1,7 @@
 <template>
-    <modal ref="modal" title="Export AVAX Transfers" class="modal_main">
+    <modal ref="modal" title="Export GEE Transfers" class="modal_main">
         <div class="csv_modal_body">
-            <p>Export AVAX transactions including cross chain transfers on X,P and C chains.</p>
+            <p>Export GEE transactions including cross chain transfers on X,P and C chains.</p>
             <p class="err" v-if="error">{{ error }}</p>
             <v-btn
                 class="button_secondary"
@@ -81,7 +81,7 @@ export default class ExportAvaxCsvModal extends Vue {
 
             const encoding = 'data:text/csv;charset=utf-8,'
             const csvContent = createCsvNormal(hist)
-            downloadCSVFile(encoding + csvContent, 'avax_transfers')
+            downloadCSVFile(encoding + csvContent, 'gee_transfers')
         } catch (e) {
             this.error = e
         }

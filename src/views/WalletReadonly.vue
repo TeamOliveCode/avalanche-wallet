@@ -103,7 +103,7 @@ export default class WalletReadonly extends Vue {
         const hist = await this.wallet.getHistory()
         const csvContent = createCsvNormal(hist)
         const encoding = 'data:text/csv;charset=utf-8,'
-        downloadCSVFile(encoding + csvContent, 'avax_transfers')
+        downloadCSVFile(encoding + csvContent, 'gee_transfers')
     }
 
     async downloadRewardsHistory() {
@@ -143,7 +143,7 @@ export default class WalletReadonly extends Vue {
 
             const csvContent = createCsvStaking(parsed)
             const encoding = 'data:text/csv;charset=utf-8,'
-            const fileName = `avax_staking_txs_${new Date().toLocaleDateString()}`
+            const fileName = `gee_staking_txs_${new Date().toLocaleDateString()}`
             downloadCSVFile(encoding + csvContent, fileName)
         } catch (e) {
             this.isStakeDownloading = false

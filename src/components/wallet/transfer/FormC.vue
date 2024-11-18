@@ -58,7 +58,7 @@
             <div class="fees" v-if="isConfirm">
                 <p>
                     {{ $t('transfer.fee_tx') }}
-                    <span>{{ maxFeeText }} AVAX</span>
+                    <span>{{ maxFeeText }} GEE</span>
                 </p>
                 <!-- 블록체인전송시 USD 표시
                 <p>
@@ -235,7 +235,7 @@ export default class FormC extends Vue {
     }
 
     get symbol(): string {
-        if (this.formToken === 'native') return 'AVAX'
+        if (this.formToken === 'native') return 'GEE'
         return this.formToken.data.symbol
     }
 

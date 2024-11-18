@@ -27,7 +27,7 @@
                             </p>
                             <p v-if="showMaxTxSizeWarning" class="desc amount_warning">
                                 The maximum amount that fits into this transaction is
-                                <b>{{ bnToAvaxP(maxTxSizeAmount) }} AVAX</b>
+                                <b>{{ bnToAvaxP(maxTxSizeAmount) }} GEE</b>
                             </p>
                             <AvaxInput
                                 v-model="stakeAmt"
@@ -119,7 +119,7 @@
                                     <fa icon="question-circle"></fa>
                                 </Tooltip>
                             </label>
-                            <p v-if="currency_type === 'AVAX'">{{ maxDelegationText }} AVAX</p>
+                            <p v-if="currency_type === 'GEE'">{{ maxDelegationText }} GEE</p>
                             <p v-if="currency_type === 'USD'">${{ maxDelegationUsdText }} USD</p>
                         </div>
                         <div>
@@ -128,8 +128,8 @@
                         </div>
                         <div>
                             <label>{{ $t('earn.validate.summary.rewards') }}</label>
-                            <p v-if="currency_type === 'AVAX'">
-                                {{ estimatedReward.toLocaleString(2) }} AVAX
+                            <p v-if="currency_type === 'GEE'">
+                                {{ estimatedReward.toLocaleString(2) }} GEE
                             </p>
                             <p v-if="currency_type === 'USD'">
                                 ${{ estimatedRewardUSD.toLocaleString(2) }} USD
@@ -293,7 +293,7 @@ export default class AddValidator extends Vue {
 
     isSuccess = false
 
-    currency_type = 'AVAX'
+    currency_type = 'GEE'
 
     maxTxSizeAmount = new BN(0)
 

@@ -26,12 +26,12 @@
             </div>
             <div class="balance_row">
                 <p class="balance" data-cy="wallet_balance" v-if="!balanceTextRight">
-                    {{ balanceTextLeft }} AVAX
+                    {{ balanceTextLeft }} GEE
                 </p>
                 <p class="balance" data-cy="wallet_balance" v-else>
                     {{ balanceTextLeft }}
                     <span>.{{ balanceTextRight }}</span>
-                    AVAX
+                    GEE
                 </p>
                 <!-- <div style="display: flex; flex-direction: row">
                     <p class="balance_usd">
@@ -51,7 +51,7 @@
                 <div class="alt_non_breakdown" v-if="!isBreakdown">
                     <div>
                         <label>{{ $t('top.balance.available') }}</label>
-                        <p>{{ unlockedText }} AVAX</p>
+                        <p>{{ unlockedText }} GEE</p>
                     </div>
                     <!-- <div v-if="hasLocked">
                         <label>{{ $t('top.locked') }}</label>
@@ -73,7 +73,7 @@
                         <label>{{ $t('top.balance.available') }} (P)</label>
                         <p>{{ platformUnlocked | cleanAvaxBN }} AVAX</p> -->
                         <label>{{ $t('top.balance.available') }} (C)</label>
-                        <p>{{ evmUnlocked | cleanAvaxBN }} AVAX</p>
+                        <p>{{ evmUnlocked | cleanAvaxBN }} GEE</p>
                     </div>
                     <!-- <div v-if="hasLocked">
                         <label>{{ $t('top.balance.locked') }} (X)</label>
