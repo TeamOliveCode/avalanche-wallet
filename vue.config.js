@@ -24,7 +24,7 @@ module.exports = {
         },
     },
     pwa: {
-        name: 'AVAX Wallet',
+        name: 'GEE Wallet',
         manifestOptions: {
             start_url: '/',
         },

@@ -19,7 +19,7 @@
             </span>
             <span>
                 The App enables users to self-custody digital assets, directly access and interact
-                with blockchains, decentralized applications (&ldquo;dapps&rdquo;) and the Avalanche
+                with blockchains, decentralized applications (&ldquo;dapps&rdquo;) and the GeeBlock
                 Bridge on a peer-to-peer basis, directly interact with other third party services,
                 view market data and access other functionality that may be developed from time to
                 time (collectively, the &ldquo;Services&rdquo;). The Services include, without
@@ -1019,7 +1019,7 @@
         </h2>
         <p class="c18">
             <span class="c0">
-                13.1 IN NO EVENT WILL WE OR AVALANCHE FOUNDATION LIMITED, ITS SUBSIDIARIES AND
+                13.1 IN NO EVENT WILL WE OR GeeBlock FOUNDATION LIMITED, ITS SUBSIDIARIES AND
                 AFFILIATES (COLLECTIVELY, THE &ldquo;FOUNDATION&rdquo;) OR OUR RESPECTIVE OFFICERS,
                 DIRECTORS, SHAREHOLDERS, EMPLOYEES, SUB-CONTRACTORS, AFFILIATES, AGENTS OR SERVICE
                 PROVIDERS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY INDIRECT, CONSEQUENTIAL,

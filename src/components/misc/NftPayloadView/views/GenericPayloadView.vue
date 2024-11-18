@@ -69,7 +69,7 @@ export default class UtfPayloadView extends Vue {
 
     mounted() {
         try {
-            this.jsonData = JSON.parse(this.content).avalanche
+            this.jsonData = JSON.parse(this.content).avalanche || JSON.parse(this.content).geeBlock
         } catch (e) {
             this.isError = true
         }
@@ -78,7 +78,7 @@ export default class UtfPayloadView extends Vue {
     @Watch('payload')
     onPayloadChange(val: JSONPayload) {
         try {
-            this.jsonData = JSON.parse(this.content).avalanche
+            this.jsonData = JSON.parse(this.content).avalanche || JSON.parse(this.content).geeBlock
         } catch (e) {
             this.isError = true
         }

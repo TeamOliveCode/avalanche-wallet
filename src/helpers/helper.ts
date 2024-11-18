@@ -63,7 +63,7 @@ function digestMessage(msgStr: string) {
     const mBuf = Buffer.from(msgStr, 'utf8')
     const msgSize = Buffer.alloc(4)
     msgSize.writeUInt32BE(mBuf.length, 0)
-    const msgBuf = Buffer.from(`\x1AAvalanche Signed Message:\n${msgSize}${msgStr}`, 'utf8')
+    const msgBuf = Buffer.from(`\x1AGeeBlock Signed Message:\n${msgSize}${msgStr}`, 'utf8')
     return createHash('sha256').update(msgBuf).digest()
 }
 

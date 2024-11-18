@@ -289,10 +289,6 @@ export default class FormC extends Vue {
         let res = this.gasPrice.mul(new BN(this.gasLimit))
         return res
     }
-    // 블록체인 전송 수수료
-    // get maxFeeUSD() {
-    //     return bnToBigAvaxC(this.maxFee).times(this.priceDict.usd)
-    // }
 
     get maxFeeText(): string {
         return bnToAvaxC(this.maxFee)
@@ -311,7 +307,6 @@ export default class FormC extends Vue {
 
         if (!this.isCollectible) {
             if (this.formToken === 'native') {
-                // For AVAX Transfers
                 let gasLimit = await TxHelper.estimateAvaxGas(
                     this.wallet.getEvmAddress(),
                     this.formAddress,

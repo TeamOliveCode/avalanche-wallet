@@ -76,11 +76,6 @@ export default class EVMTokenSelectModal extends Vue {
         return this.$store.getters['Assets/ERC721/networkContracts']
     }
 
-    // get symbol() {
-    //     if (this.selected === 'native') return 'AVAX'
-    //     else return this.selected.data.symbol
-    // }
-
     get avaxBalance(): Big {
         let w: WalletType | null = this.$store.state.activeWallet
         if (!w) return Big(0)

@@ -59,7 +59,6 @@ export default {
         this.$store.commit('Accounts/loadAccounts')
         this.$store.dispatch('Assets/initErc20List')
         this.$store.dispatch('Assets/ERC721/init')
-        //this.$store.dispatch('updateAvaxPrice')
 
         if (this.$store.state.Accounts.accounts.length > 0) {
             // Do not route for legal pages
@@ -83,22 +82,22 @@ export default {
                 vmid: 'description',
                 name: 'description',
                 content:
-                    'Avalanche wallet is a simple, highly secure, non-custodial crypto wallet for storing AVAX.',
+                    'GeeBlock wallet is a simple, highly secure, non-custodial crypto wallet for storing GEE.',
             },
             {
                 vmid: 'og:description',
                 name: 'description',
                 content:
-                    'Avalanche wallet is a simple, highly secure, non-custodial crypto wallet for storing AVAX.',
+                    'GeeBlock wallet is a simple, highly secure, non-custodial crypto wallet for storing GEE.',
             },
             {
                 vmid: 'og:title',
                 name: 'og:title',
-                content: 'Fastest Performing and Secure DeFi Wallet | Avalanche Wallet',
+                content: 'Fastest Performing and Secure DeFi Wallet | GeeBlock Wallet',
             },
         ],
         title: 'Fastest Performing and Secure DeFi Wallet',
-        titleTemplate: '%s | Avalanche Wallet',
+        titleTemplate: '%s | GeeBlock Wallet',
     },
 }
 </script>

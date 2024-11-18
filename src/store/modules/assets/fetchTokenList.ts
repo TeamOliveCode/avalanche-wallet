@@ -17,7 +17,7 @@ export async function fetchTokenList(): Promise<TokenList> {
     const tokensTestnet = json[43113].tokens.map(mapTokenInfo)
 
     return {
-        name: 'Avalanche (C-Chain)',
+        name: 'GeeBlock (C-Chain)',
         logoURI:
             'https://glacier-api.avax.network/proxy/chain-assets/3e1b653/chains/43113/token-logo.png',
         keywords: [],

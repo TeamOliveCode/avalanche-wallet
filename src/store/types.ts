@@ -18,14 +18,14 @@ export interface RootState {
     address: String | null
     volatileWallets: WalletType[] // will be forgotten when tab is closed
     warnUpdateKeyfile: boolean
-    prices: priceDict // USD value of 1 AVAX
+    prices: priceDict // USD value of 1 GEE
     magic?: any
 }
 
 export interface ILedgerAppConfig {
     version: string
     commit: string
-    name: 'Avalanche'
+    name: 'GeeBlock'
 }
 
 export interface priceDict {

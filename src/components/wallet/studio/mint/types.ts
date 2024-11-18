@@ -14,7 +14,7 @@ export interface JsonFormType {
 
 export interface GenericFormType {
     data: {
-        avalanche: IGenericNft
+        geeBlock: IGenericNft
     }
 }
 

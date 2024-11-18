@@ -39,7 +39,6 @@ import { SingletonWallet } from '@/js/wallets/SingletonWallet'
 import { Buffer } from 'avalanche'
 import { privateToAddress } from 'ethereumjs-util'
 import { updateFilterAddresses } from '../providers'
-//import { getAvaxPriceUSD } from '@/helpers/price_helper'
 import { MagicWallet } from '@/js/wallets/MagicWallet'
 
 export default new Vuex.Store({
@@ -395,12 +394,5 @@ export default new Vuex.Store({
                 throw err
             }
         },
-        //CoinGecko 에서 Avax 코인 가격 데이터를 가져와서 업데이트 합니다.
-        // async updateAvaxPrice(store) {
-        //     const usd = await getAvaxPriceUSD()
-        //     store.state.prices = {
-        //         usd,
-        //     }
-        // },
     },
 })

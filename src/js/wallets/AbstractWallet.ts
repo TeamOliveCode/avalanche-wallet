@@ -153,7 +153,7 @@ abstract class AbstractWallet {
     /**
      *
      * @param sourceChain
-     * @param fee Fee to use in nAVAX
+     * @param fee Fee to use
      * @param utxoSet
      */
     async importToCChain(sourceChain: ExportChainsC, fee: BN, utxoSet?: EVMUTXOSet) {
@@ -161,7 +161,6 @@ abstract class AbstractWallet {
             utxoSet = await this.evmGetAtomicUTXOs(sourceChain)
         }
 
-        // TODO: Only use AVAX utxos
         // TODO?: If the import fee for a utxo is greater than the value of the utxo, ignore it
 
         if (utxoSet.getAllUTXOs().length === 0) {

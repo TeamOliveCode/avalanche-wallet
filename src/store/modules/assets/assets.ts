@@ -364,13 +364,13 @@ const assets_module: Module<AssetsState, RootState> = {
             const tokens: Erc20Token[] = getters.networkErc20Tokens
             tokens.forEach((token) => {
                 //체인아이디가 다를경우 보여주지 않습니다
-                //저희는 저희의 토큰을 보여주면서 AVAX 메인넷 토큰을등록할수있어야 하기에 비활성화 처리합니다.
+                //저희는 저희의 토큰을 보여주면서 GEE 메인넷 토큰을등록할수있어야 하기에 비활성화 처리합니다.
                 // if (token.data.chainId !== networkID) return
                 token.updateBalance(wallet!.ethAddress)
             })
         },
 
-        // What is the AVAX coin in the network
+        // What is the GEE coin in the network
         async updateAvaAsset({ state, commit }) {
             const res = await avm.getAssetDescription('GEE')
             const id = bintools.cb58Encode(res.assetID)
@@ -484,7 +484,7 @@ const assets_module: Module<AssetsState, RootState> = {
             //토큰 정보 불러오기 LocalStorage에 등록된 토큰과 체인id 가 다르다면 가져올수없음.
             const filt = tokens.filter((t) => {
                 //체인아이디가 다를경우 보여주지 않습니다
-                //저희는 저희의 토큰을 보여주면서 AVAX 메인넷 토큰을등록할수있어야 하기에 비활성화 처리합니다.
+                //저희는 저희의 토큰을 보여주면서 GEE 메인넷 토큰을등록할수있어야 하기에 비활성화 처리합니다.
                 // if (t.data.chainId !== chainId) return false
                 return true
             })
@@ -544,7 +544,7 @@ const assets_module: Module<AssetsState, RootState> = {
                     asset.addBalanceMultisig(balanceAmt.multisig)
                 }
 
-                // Add extras for AVAX token
+                // Add extras for GEE token
                 // @ts-ignore
                 if (asset.id === state.AVA_ASSET_ID) {
                     asset.addExtra(getters.walletStakingBalance)
@@ -621,7 +621,7 @@ const assets_module: Module<AssetsState, RootState> = {
             const now = UnixNow()
 
             const utxos = utxoSet.getAllUTXOs()
-            // Only use AVAX UTXOs
+            // Only use GEE UTXOs
             const avaxID = bintools.cb58Decode(state.AVA_ASSET_ID)
             const avaxUTXOs = utxos.filter((utxo) => utxo.getAssetID().equals(avaxID))
 
