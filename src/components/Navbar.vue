@@ -21,7 +21,6 @@
                 </router-link>
             </template>
             <network-menu></network-menu>
-            <LanguageSelect class="lang_web"></LanguageSelect>
 
             <!-- <button @click="togglePopup">
                 <fa icon="ellipsis-h"></fa>
@@ -81,7 +80,6 @@
                 </template>
                 <div class="mobile_bottom">
                     <AccountMenu></AccountMenu>
-                    <LanguageSelect class="lang_mobile"></LanguageSelect>
                 </div>
             </v-list>
         </v-navigation-drawer>

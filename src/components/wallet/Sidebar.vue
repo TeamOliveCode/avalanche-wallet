@@ -52,7 +52,7 @@
             </div>
             <div class="bottom">
                 <AccountMenu class="wallet_link"></AccountMenu>
-                <LanguageSelect></LanguageSelect>
+                <!-- <LanguageSelect></LanguageSelect> -->
                 <!-- <AnalyticsCheckbox></AnalyticsCheckbox> -->
             </div>
         </div>
