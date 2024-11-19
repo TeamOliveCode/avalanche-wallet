@@ -161,7 +161,7 @@ export default class BalanceCard extends Vue {
             let denom = this.ava_asset.denomination
             return this.totalBalanceBig.toLocaleString(denom)
         } else {
-            return '?'
+            return '0'
         }
     }
 
